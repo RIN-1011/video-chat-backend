@@ -32,8 +32,8 @@ public class AttendanceServiceImpl implements AttendanceService{
         String path = "C:/Users/DELL/Desktop/capstone/face-detection/";
         File file = new File(path+"image_base64.txt") ;
 
-        // true 지정시 파일의 기존 내용에 이어서 작성
-        FileWriter fileWriter = new FileWriter(file, true) ;
+        FileWriter fileWriter = new FileWriter(file) ;
+
         // 파일안에 문자열 쓰기
         fileWriter.write(faceImageDTO.getFaceImage());
         fileWriter.flush();
@@ -47,8 +47,7 @@ public class AttendanceServiceImpl implements AttendanceService{
 
             final String inputData = "image_base64.txt";
 
-            //path 에다가 파이썬 파일이 있는 경로 설정
-
+            //path 에다가 파이썬 파일이 있는 경로 설
 
             String command ="python " + path + "face_detection.py " + path + inputData + " " + path;
 
@@ -61,6 +60,7 @@ public class AttendanceServiceImpl implements AttendanceService{
 
 
             while ((line = input.readLine()) !=null) {
+                System.out.println(line);
                 if(line.equals("True")){
                     return true;
                 }
@@ -76,6 +76,7 @@ public class AttendanceServiceImpl implements AttendanceService{
         }catch (IOException err) {
             err.printStackTrace();
         }finally {
+            file.delete();
             if (input !=null) input.close();
         }
 
