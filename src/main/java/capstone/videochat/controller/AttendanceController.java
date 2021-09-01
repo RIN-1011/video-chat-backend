@@ -31,6 +31,7 @@ public class AttendanceController {
         return isHuman;
     }
 
+    @CrossOrigin("*")
     @PostMapping("attendance/attend")
     @ResponseBody
     public void processAttend(@RequestBody AttendanceDTO attendanceDTO){
