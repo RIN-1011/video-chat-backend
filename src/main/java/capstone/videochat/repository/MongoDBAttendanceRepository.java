@@ -27,7 +27,7 @@ public class MongoDBAttendanceRepository implements AttendanceRepository{
 
 
     @Override
-    public void save(AttendanceDTO attendanceDTO) {
-        mongoTemplate.insert(attendanceDTO, "attendance");
+    public void save(Attendance attendance) {
+        mongoTemplate.insert(attendance, "attendance");
     }
 }

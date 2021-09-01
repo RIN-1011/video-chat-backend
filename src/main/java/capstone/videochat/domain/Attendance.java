@@ -10,7 +10,7 @@ public class Attendance {
     @Id
     String _id; //PRIMARY KEY
     String meetingRoom_id; //입장한 미팅룸 번호
-    String studentId; //Member 컬렉션의 학번 저장
+    String studentId; //User 컬렉션의 학번 저장
     Date date; // 미팅룸 출석 날짜
 
     public String get_id() {
