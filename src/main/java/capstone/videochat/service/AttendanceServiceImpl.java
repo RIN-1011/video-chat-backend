@@ -29,7 +29,7 @@ public class AttendanceServiceImpl implements AttendanceService{
 
     @Override
     public boolean checkFaceId(FaceImageDTO faceImageDTO) throws IOException {
-        String path = "C:/Users/DELL/Desktop/capstone/face-detection/";
+        String path = "C:/Users/9993e/Desktop";
         File file = new File(path+"image_base64.txt") ;
 
         FileWriter fileWriter = new FileWriter(file) ;
@@ -86,13 +86,15 @@ public class AttendanceServiceImpl implements AttendanceService{
 
     @Override
     public boolean attend(AttendanceDTO attendanceDTO) {
-        Attendance attendance=new Attendance();
-        Date attendTime =new Date(System.currentTimeMillis());
+        Attendance attendance = new Attendance();
+        Date attendTime = new Date(System.currentTimeMillis());
 
         attendance.setMeetingRoom_id(attendanceDTO.getMeetingRoomNum());
         attendance.setStudentId(attendanceRepository.findById(attendanceDTO.getUserId()));
         attendance.setDate(attendTime);
-        this.attendanceRepository.save(attendanceDTO);
+
+        attendanceRepository.save(attendance);
+
         return true;
     }
 }
